@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: ./backend2
+    image: 2026gscomp291-backend:latest
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend2
+    image: 2026gscomp291-frontend:latest
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+
