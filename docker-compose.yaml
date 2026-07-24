@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./backend2
+    image: malinthamaduranga/2026gscomp291p3:backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend2
+    image: malinthamaduranga/2026gscomp291p3:frontend
+    ports:
+      - "8082:80"
+    depends_on:
+      - backend
+
+  
