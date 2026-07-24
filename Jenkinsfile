@@ -33,18 +33,22 @@ pipeline {
                         echo %DOCKERHUB_PASSWORD%|docker login -u %DOCKERHUB_USERNAME% --password-stdin
                         if errorlevel 1 exit /b 1
 
-                     
+                        docker tag malinthamaduranga/2026gscomp291p2:backend malinthamaduranga/2026gscomp291p2:backend-%BUILD_NUMBER%
+                        if errorlevel 1 exit /b 1
 
-                        docker push malinthamaduranga/2026gscomp291p2:backend:%BUILD_NUMBER%
+                        docker tag malinthamaduranga/2026gscomp291p2:frontend malinthamaduranga/2026gscomp291p2:frontend-%BUILD_NUMBER%
                         if errorlevel 1 exit /b 1
 
                         docker push malinthamaduranga/2026gscomp291p2:backend
                         if errorlevel 1 exit /b 1
 
-                        docker push malinthamaduranga/2026gscomp291p2:frontend:%BUILD_NUMBER%
+                        docker push malinthamaduranga/2026gscomp291p2:backend-%BUILD_NUMBER%
                         if errorlevel 1 exit /b 1
 
-                        docker push malinthamaduranga/2026gscomp291p2:frontend:latest
+                        docker push malinthamaduranga/2026gscomp291p2:frontend
+                        if errorlevel 1 exit /b 1
+
+                        docker push malinthamaduranga/2026gscomp291p2:frontend-%BUILD_NUMBER%
                         if errorlevel 1 exit /b 1
                     '''
                 }
